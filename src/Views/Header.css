@@ -1,7 +1,7 @@
 @font-face {
-  font-family: "CafeRacer Heading";
-  src: url("src/assets/fonts/home-video/HomeVideo-Regular.ttf") format("truetype");
-  font-weight: 500;
+  font-family: "Home Video";
+  src: url("../assets/fonts/home-video/HomeVideo-Regular.ttf") format("truetype");
+  font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
@@ -1016,22 +1016,9 @@ body {
   }
 }
 
+.cr-header .cr-tagline,
+.cr-header .cr-tagline .cr-title-letter,
 .cr-story .cr-description {
-  font-family: "Host Grotesk", sans-serif;
-  font-weight: 500;
-}
-
-/* temporary */
-.cr-header .cr-story .cr-description {
-  
-  font-family: "cafeRacer Heading";
-  font-weight: 300;
-  font-style: normal;
-  font-size: clamp(10px, 3.4cqw, 14px);
-  line-height: 1.4;
-}
-.cr-header .cr-tagline {
-  font-family: "cafeRacer Heading";
-  font-weight: 500;
-  line-spacing: -1em;
+  font-family: "Home Video", sans-serif;
+  font-weight: 400;
 }
