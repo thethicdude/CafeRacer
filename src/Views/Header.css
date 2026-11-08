@@ -1,3 +1,11 @@
+@font-face {
+  font-family: "CafeRacer Heading";
+  src: url("src/assets/fonts/home-video/HomeVideo-Regular.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
 .cr-header {
   container-type: inline-size;
   width: 100%;
@@ -147,7 +155,7 @@
   margin-top: 0.8cqw;
   font-family: "Segoe UI Light", "Helvetica Neue", "Segoe UI", sans-serif;
   font-size: 18cqw;
-  font-weight: 300;
+  font-weight: 200;
   letter-spacing: -0.085em;
   line-height: 1;
 }
@@ -630,10 +638,11 @@ body {
 
 .cr-story .cr-description {
   position: static;
-  width: 53%;
+  width: 48%;
   margin: 0;
   color: #fff;
   line-height: 1.4;
+  text-align: left;
 }
 
 .cr-story .cr-buy {
@@ -676,4 +685,353 @@ body {
     bottom: 0;
     height: 145%;
   }
+}
+
+.cr-menu-toggle,
+.cr-copy-mobile {
+  display: none;
+}
+
+.cr-story .cr-buy {
+  border-radius: 999px;
+}
+
+/* A transparent full-screen dialog contains the half-width white panel. */
+.cr-drawer {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100dvh;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #080808;
+  overflow: hidden;
+}
+
+.cr-drawer::backdrop {
+  background: rgb(0 0 0 / 32%);
+}
+
+.cr-drawer-panel {
+  width: 50%;
+  height: 100%;
+  margin-left: auto;
+  padding: max(14px, env(safe-area-inset-top)) 12px 20px;
+  overflow-y: auto;
+  background: #fff;
+  text-align: left;
+}
+
+.cr-drawer-head,
+.cr-profile {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cr-drawer-head {
+  justify-content: space-between;
+}
+
+.cr-profile {
+  min-width: 0;
+  font-size: 14px;
+}
+
+.cr-profile strong {
+  overflow-wrap: anywhere;
+}
+
+.cr-profile img,
+.cr-avatar {
+  flex: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.cr-avatar {
+  display: grid;
+  place-items: center;
+  background: #f6e7df;
+  color: #64250e;
+}
+
+.cr-menu-toggle,
+.cr-menu-close {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #080808;
+  font: inherit;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+.cr-drawer .cr-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+  gap: 8px;
+  margin-top: 24px;
+  font-size: 15px;
+}
+
+.cr-drawer .cr-nav-link {
+  min-height: 44px;
+}
+
+@keyframes cr-drawer-in {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(0); }
+}
+
+@keyframes cr-mobile-enter-left {
+  from { opacity: 0; translate: -80% 0; }
+  to   { opacity: 1; translate: 0 0; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .cr-drawer[open] .cr-drawer-panel {
+    animation: cr-drawer-in 280ms ease-out;
+  }
+}
+
+@container (max-width: 760px) {
+  .cr-topbar {
+    width: 92%;
+    min-height: 56px;
+    flex-wrap: nowrap;
+  }
+
+  .cr-topbar > .cr-nav,
+  .cr-actions > .cr-bag,
+  .cr-copy-desktop {
+    display: none;
+  }
+
+  .cr-menu-toggle {
+    display: grid;
+    place-items: center;
+  }
+
+  .cr-actions {
+    gap: 6px;
+  }
+
+  .cr-copy-mobile {
+    display: inline;
+  }
+
+  .cr-hero {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    grid-template-rows: auto auto minmax(0, 1fr) auto;
+    grid-template-areas:
+      "tagline tagline"
+      "title   title"
+      "glass   glass"
+      "badges  story";
+    gap: 4px 0;
+    padding: 0;
+    align-items: center;
+  }
+
+  .cr-tagline {
+    grid-area: tagline;
+    padding:  16px 9% 16px;
+    font-size: clamp(14px, 3.7cqw, 20px);
+  }
+
+  .cr-spark {
+    top: 7px;
+    left: 4%;
+  }
+
+  .cr-title {
+    grid-area: title;
+    margin: 0;
+    font-size: min(15cqw, 9dvh);
+    line-height: 0.94;
+  }
+
+  .cr-title-space {
+    display: block;
+    height: 0;
+  }
+
+  .cr-drink {
+    grid-area: glass;
+    position: static;
+    justify-self: start;
+    width: 63%;
+    height: 100%;
+    max-height: 38dvh;
+    min-height: 0;
+    margin: 0;
+    object-fit: contain;
+    transform: rotate(24deg);
+  }
+
+  .cr-features {
+    grid-area: badges;
+    position: relative;
+    inset: auto;
+    display: grid;
+    justify-self: start;
+    align-self: end;
+    gap: 5px;
+    padding: 0 0 max(14px, env(safe-area-inset-bottom)) 3cqw;
+  }
+
+  .cr-features li {
+    gap: 4px;
+    padding-right: 6px;
+    font-size: clamp(10px, 2.7cqw, 13px);
+  }
+
+  .cr-feature-icon {
+    flex: none;
+    width: 24px;
+    height: 28px;
+  }
+
+  .cr-story {
+    grid-area: story;
+    position: relative;
+    align-self: end;
+    width: 100%;
+    margin: 0;
+    padding: 14px 4cqw max(14px, env(safe-area-inset-bottom)) 5cqw;
+    border-radius: 0;
+    background: #e94113;
+  }
+
+  /* The mirrored desktop curve rises toward the right-hand edge. */
+  .cr-story-shape {
+    display: block;
+    inset: auto 0 calc(100% - 1px) auto;
+    width: 100%;
+    height: min(12dvh, 100px);
+    transform: scaleX(-1);
+  }
+
+  .cr-story .cr-description {
+    width: 100%;
+    font-size: clamp(13px, 3.4cqw, 16px);
+    line-height: 1.4;
+  }
+
+  .cr-story .cr-buy {
+    min-height: 40px;
+    margin-top: 10px;
+    padding-inline: 18px;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .cr-drink,
+    .cr-features li {
+      animation-name: cr-mobile-enter-left;
+    }
+  }
+}
+
+.cr-spark-curve {
+  display: none;
+}
+
+@container (max-width: 760px) {
+  /* Remove the tall orange ellipse from the mobile background. */
+  .cr-fold {
+    background: linear-gradient(112deg, #fff, #f8f5f4 55%, #fff);
+  }
+
+  .cr-title {
+    font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    font-weight: 500;
+    letter-spacing: -0.055em;
+    line-height: 1.04;
+  }
+
+  /* Put the circular glow in the same grid row as the glass. */
+  .cr-hero::before {
+    content: "";
+    grid-area: glass;
+    align-self: center;
+    justify-self: center;
+    width: min(90cqw, 44dvh);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle closest-side,
+      #ff9b60 0%,
+      #ffc39e 45%,
+      rgb(255 180 135 / 30%) 72%,
+      transparent 100%
+    );
+    pointer-events: none;
+  }
+
+  /* Tilt the rim toward the upper right, as in the green outline. */
+  .cr-drink {
+    width: 79%;
+    max-height: 44dvh;
+    margin-left: 2cqw;
+    transform: rotate(34deg);
+    transform-origin: center;
+  }
+
+  .cr-watermark {
+    font-size: clamp(82px, 23cqw, 156px);
+    right: -3cqw;
+    color: rgb(0 0 0 / 4%);
+  }
+
+  .cr-story .cr-spark-curve {
+    display: grid;
+    top: auto;
+    left: auto;
+    right: 5cqw;
+    bottom: calc(100% + min(12dvh, 100px) + 4px);
+    width: clamp(24px, 7cqw, 40px);
+    height: auto;
+    aspect-ratio: 1;
+    font-size: clamp(15px, 4cqw, 23px);
+    pointer-events: none;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .cr-spark-curve {
+      animation-delay: 350ms;
+    }
+  }
+}
+
+.cr-story .cr-description {
+  font-family: "Host Grotesk", sans-serif;
+  font-weight: 500;
+}
+
+/* temporary */
+.cr-header .cr-story .cr-description {
+  
+  font-family: "cafeRacer Heading";
+  font-weight: 300;
+  font-style: normal;
+  font-size: clamp(10px, 3.4cqw, 14px);
+  line-height: 1.4;
+}
+.cr-header .cr-tagline {
+  font-family: "cafeRacer Heading";
+  font-weight: 500;
+  line-spacing: -1em;
 }

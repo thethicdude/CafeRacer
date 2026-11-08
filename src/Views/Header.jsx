@@ -3,6 +3,7 @@ import logo from "../assets/images/logo192.png";
 import "./Header.css";
 import Navbar from "./Navbar";
 import { useState } from "react";
+import MobileMenu from "./MobileMenu";
 
 const features = [
   { icon: "drop", text: "65% Less acidity" },
@@ -47,7 +48,7 @@ const Icon = ({ name }) => {
 
 const tagline = "Pure Caffeine Nothing Extra";
 
-const Header = () => {
+const Header = ({ user }) => {
   const [heroVersion, setHeroVersion] = useState(0);
 
   const replayHero = () => {
@@ -68,14 +69,16 @@ const Header = () => {
 
           <Navbar onHomeClick={replayHero} />
 
-          
           <div className="cr-actions">
             <a className="cr-signin" href="#sign-in">
               Sign In
             </a>
-            <a className="cr-bag" href="#cart" aria-label="Shopping bag">
+
+            {/* <a className="cr-bag" href="#cart" aria-label="Shopping bag">
               <Icon name="bag" />
-            </a>
+            </a> */}
+
+            <MobileMenu onHomeClick={replayHero} />
           </div>
         </div>
 
@@ -102,13 +105,18 @@ const Header = () => {
               </span>
             ))}
           </p>
+          
           <h1 className="cr-title" aria-label="SLOW BREWED">
             {Array.from("SLOW BREWED", (letter, index) => (
               <span
                 key={index}
-                className="cr-title-letter"
+                className={
+                  letter === " " ? "cr-title-space" : "cr-title-letter"
+                }
                 aria-hidden="true"
-                style={{ "--letter-delay": `${180 + (7 - index) * 100}ms` }}
+                style={{
+                  "--letter-delay": `${180 + ("SLOW BREWED".length - 1 - index) * 100}ms`,
+                }}
               >
                 {letter}
               </span>
@@ -122,6 +130,10 @@ const Header = () => {
           />
 
           <div className="cr-story">
+
+            <span className="cr-spark cr-spark-curve" aria-hidden="true">✦</span>
+
+            
             <svg
               className="cr-story-shape"
               viewBox="0 0 600 400"
@@ -138,10 +150,17 @@ const Header = () => {
             </svg>
 
             <p className="cr-description">
-              Cold brew is coffee in its rawest form—steeped slow, brewed cold,
-              and packed with bold flavor. No heat, no bitterness, just smooth,
-              high-caffeine energy that lasts. Whether you need a morning boost
-              or fuel for late nights, this is coffee without compromise.
+              <span className="cr-copy-desktop">
+                Cold brew is coffee in its rawest form—steeped slow, brewed
+                cold, and packed with bold flavor. No heat, no bitterness, just
+                smooth, high-caffeine energy that lasts. Whether you need a
+                morning boost or fuel for late nights, this is coffee without
+                compromise.
+              </span>
+              <span className="cr-copy-mobile">
+                Steeped cold for 16 hours. Bold flavor, a smooth finish, and a
+                little extra caffeine.
+              </span>
             </p>
 
             <a className="cr-buy" href="#products">

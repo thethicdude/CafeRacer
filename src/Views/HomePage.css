@@ -4,3 +4,26 @@
   padding: 0;
   text-align: center;
 }
+
+.cr-header .cr-signin,
+.cr-header .cr-buy {
+  border: 1px solid #000;
+  border-radius: 999px;
+  background-color: #000;
+  color: #fff;
+  white-space: nowrap;
+  transition: background-color 180ms ease, color 180ms ease;
+}
+
+.cr-header .cr-signin {
+  padding-inline: 1.3em;
+}
+
+@media (hover: hover) {
+  .cr-header .cr-signin:hover,
+  .cr-header .cr-buy:hover {
+    background-color: #fff;
+    color: #000;
+    opacity: 1;
+  }
+}
