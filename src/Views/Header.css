@@ -1022,3 +1022,32 @@ body {
   font-family: "Home Video", sans-serif;
   font-weight: 400;
 }
+
+@container (max-width: 760px) {
+  .cr-drawer {
+    position: fixed;
+    inset: 0 0 0 auto;
+    width: 50%;
+    height: 100dvh;
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    overflow: hidden;
+  }
+
+  .cr-drawer-panel {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+  }
+
+  .cr-drawer[open] .cr-drawer-panel {
+    animation: none;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .cr-drawer[open] {
+      animation: cr-drawer-in 240ms ease-out both;
+    }
+  }
+}

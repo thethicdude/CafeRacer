@@ -44,9 +44,15 @@ const MobileMenu = ({onHomeClick, user}) => {
         id="cr-mobile-menu"
         className="cr-drawer"
         aria-label="Main menu"
-        onClick={(event) => {
-          if (event.target === drawer.current) closeMenu();
-        }}
+       onClick={(event) => {
+  if (event.target !== event.currentTarget) return;
+
+  const bounds = event.currentTarget.getBoundingClientRect();
+
+  if (event.clientX < bounds.left || event.clientX >= bounds.right) {
+    closeMenu();
+  }
+}}
       >
         <div className="cr-drawer-panel">
           <div className="cr-drawer-head">
