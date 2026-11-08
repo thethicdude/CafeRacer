@@ -1,4 +1,4 @@
-.counter {
+ .counter {
   font-size: 16px;
   padding: 5px 10px;
   border-radius: 5px;
@@ -181,4 +181,19 @@
     right: 0;
     border-right-color: var(--border);
   }
+}
+
+body {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+#root,
+#root > .App {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
 }

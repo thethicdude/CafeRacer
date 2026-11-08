@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "caferacer-o01"
-  }
+    "default": "caferacer-o01",
+    "hero": "caferacer-o01"
+  },
+  "targets": {},
+  "etags": {}
 }
